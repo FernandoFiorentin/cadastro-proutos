@@ -10,7 +10,7 @@ class HomeController
 
     public function home(Request $request, Response $response, $args)
     {
-        $response->getBody()->write("Homepage");
+        $response->getBody()->write("Welcome to homepage");
         return $response;
     }
 }
