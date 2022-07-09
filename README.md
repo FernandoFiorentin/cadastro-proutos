@@ -1,3 +1,13 @@
+# Cadastro de Produtos
+
+Projeto criado para praticar um pouco de PHP.
+
+Versão o PHP: 7.4+
+
+Utiliza os seguintes frameworks:
+- Slim para roteamento
+- Twig para os templates
+
 ### Instalar dependências
 ```bash
 composer install
