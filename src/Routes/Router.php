@@ -15,7 +15,7 @@ class Router{
     }
 
     public function registerRoutes(){
-        $this->app->get('/', [HomeController::class, 'home']);
+        $this->app->get('/', [HomeController::class, 'home'])->setName('home');
     }
 
 
