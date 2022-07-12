@@ -1,19 +1,30 @@
 <?php
+
 namespace App\UI\Product\Controllers;
 
-use App\Modules\Product\Entities\Product;
+use App\Modules\Product\Repositories\Interfaces\IProductRepository;
+use App\Modules\Product\Repositories\ProductRepository;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Views\Twig;
 
 class ProductController
 {
+    private IProductRepository $productRepository;
+
+    public function __construct(IProductRepository $productRepository = null)
+    {
+        if($productRepository){
+            $this->productRepository = $productRepository;
+        }else{
+            $this->productRepository = new ProductRepository();
+        }
+    }
+
     public function listProducts(Request $request, Response $response, $args)
     {
         $view = Twig::fromRequest($request);
-        $products = [];
-        $products[] = new Product(1, "My product", 30);
-        $products[] = new Product(2, "My product 2", 40);
+        $products = $this->productRepository->findAll();
         $data = ['products' => $products];
         return $view->render($response, 'Product/product.html', $data);
     }
