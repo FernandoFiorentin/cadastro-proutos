@@ -1,11 +1,11 @@
 <?php
 
+require __DIR__ . '/../vendor/autoload.php';
+
 use App\Routes\Router;
 use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
-
-require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
 
