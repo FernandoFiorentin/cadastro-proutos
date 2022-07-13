@@ -1,6 +1,5 @@
 <?php
-
-namespace App\UI\Home\Controllers;
+namespace App\UI\Controllers\Home;
 
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;

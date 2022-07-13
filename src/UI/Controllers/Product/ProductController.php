@@ -1,6 +1,5 @@
 <?php
-
-namespace App\UI\Product\Controllers;
+namespace App\UI\Controllers\Product;
 
 use App\Modules\Product\Repositories\Interfaces\IProductRepository;
 use App\Modules\Product\Repositories\ProductRepository;
