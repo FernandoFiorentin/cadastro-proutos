@@ -11,16 +11,12 @@ class ProductController
 {
     private IProductRepository $productRepository;
 
-    public function __construct(IProductRepository $productRepository = null)
+    public function __construct(IProductRepository $productRepository)
     {
-        if($productRepository){
-            $this->productRepository = $productRepository;
-        }else{
-            $this->productRepository = new ProductRepository();
-        }
+        $this->productRepository = $productRepository;
     }
 
-    public function listProducts(Request $request, Response $response, $args)
+    public function listProducts(Request $request, Response $response)
     {
         $view = Twig::fromRequest($request);
         $products = $this->productRepository->findAll();

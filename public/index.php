@@ -2,12 +2,18 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
+use App\Config\Dependencies;
 use App\Routes\Router;
-use Slim\Factory\AppFactory;
+use DI\Bridge\Slim\Bridge;
+use DI\ContainerBuilder;
 use Slim\Views\Twig;
 use Slim\Views\TwigMiddleware;
 
-$app = AppFactory::create();
+$containerBuilder = new ContainerBuilder();
+$containerBuilder->addDefinitions(Dependencies::getDefinitions());
+$container = $containerBuilder->build();
+
+$app = Bridge::create($container);
 
 $twig = Twig::create(__DIR__ . '/../src/UI\Templates', ['chace' => false]);
 $app->add(TwigMiddleware::create($app, $twig));

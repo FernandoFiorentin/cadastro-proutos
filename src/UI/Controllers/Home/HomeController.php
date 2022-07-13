@@ -7,7 +7,7 @@ use Slim\Views\Twig;
 
 class HomeController
 {
-    public function home(Request $request, Response $response, $args)
+    public function home(Request $request, Response $response)
     {
         $view = Twig::fromRequest($request);
         $data = ['pageName' => 'Homee!'];
