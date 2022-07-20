@@ -4,12 +4,13 @@ namespace App\UI\Controllers\Product;
 
 use App\Modules\Product\Entities\Product;
 use App\Modules\Product\Repositories\Interfaces\IProductRepository;
+use App\UI\Controllers\Controller;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 use Slim\Routing\RouteContext;
 use Slim\Views\Twig;
 
-class ProductController
+class ProductController extends Controller
 {
     private IProductRepository $productRepository;
 
@@ -47,8 +48,8 @@ class ProductController
         $product->price = $formData['price'];
 
         $this->productRepository->save($product);
-        $routeContext = RouteContext::fromRequest($request);
-        $routeParser = $routeContext->getRouteParser();
+        
+        $routeParser = $this->getRouteParser($request);
         return $response
             ->withHeader('Location', $routeParser->urlFor('products'))
             ->withStatus(302);
