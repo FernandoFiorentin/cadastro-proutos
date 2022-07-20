@@ -19,6 +19,7 @@ class Router{
     public function registerRoutes(){
         $this->app->get('/', [HomeController::class, 'home'])->setName('home');
         $this->app->get('/products', [ProductController::class, 'listProducts'])->setName('products');
+        $this->app->map(['GET', 'POST'], '/products/create', [ProductController::class, 'createProduct'])->setName('createProduct');
     }
 
 

@@ -3,26 +3,18 @@
 {% block title %}Product{% endblock %}
 
 {% block content %}
-	<h1>Lista de Produtos </h1>
+    <h1>Hello to creation of a new product</h1>
 
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th scope="col">#</th>
-				<th scope="col">Nome</th>
-				<th scope="col">Preço</th>
-				<th scope="col">Ações</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for product in products %}
-				<tr>
-					<th scope="row">{{ product.id }}</th>
-					<td>{{ product.name }}</td>
-					<td>{{ product.price }}</td>
-					<td></td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+    <form method="post">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Informe o nome do produto">
+          </div>
+          <div class="mb-3">
+            <label for="price" class="form-label">Preço</label>
+            <input type="number" class="form-control" id="price" name="price" placeholder="Informe o preço do produto" min="0.00">
+          </div>
+          <input type="submit" value="Salvar" class="btn btn-primary">
+    </form>
+    
 {% endblock %}
