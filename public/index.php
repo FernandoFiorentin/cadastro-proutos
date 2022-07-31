@@ -15,7 +15,7 @@ $container = $containerBuilder->build();
 
 $app = Bridge::create($container);
 
-$twig = Twig::create(__DIR__ . '/../src/UI\Templates', ['chace' => false]);
+$twig = Twig::create(__DIR__ . '/../src/Presentation\Templates', ['chace' => false]);
 $app->add(TwigMiddleware::create($app, $twig));
 
 $app->addErrorMiddleware(true, true, true);

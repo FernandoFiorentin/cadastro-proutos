@@ -1,13 +1,12 @@
 <?php
 
-namespace App\UI\Controllers\Product;
+namespace App\Presentation\Controllers\Product;
 
 use App\Modules\Product\Entities\Product;
 use App\Modules\Product\Repositories\Interfaces\IProductRepository;
-use App\UI\Controllers\Controller;
+use App\Presentation\Controllers\Controller;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
-use Slim\Routing\RouteContext;
 use Slim\Views\Twig;
 
 class ProductController extends Controller

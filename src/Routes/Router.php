@@ -2,8 +2,8 @@
 
 namespace App\Routes;
 
-use App\UI\Controllers\Home\HomeController;
-use App\UI\Controllers\Product\ProductController;
+use App\Presentation\Controllers\Home\HomeController;
+use App\Presentation\Controllers\Product\ProductController;
 
 use Slim\App;
 

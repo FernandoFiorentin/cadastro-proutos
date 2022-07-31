@@ -1,5 +1,5 @@
 <?php
-namespace App\UI\Controllers;
+namespace App\Presentation\Controllers;
 
 use Slim\Interfaces\RouteParserInterface;
 use Slim\Psr7\Request;
