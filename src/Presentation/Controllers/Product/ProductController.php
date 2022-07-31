@@ -3,7 +3,9 @@
 namespace App\Presentation\Controllers\Product;
 
 use App\Modules\Product\Entities\Product;
+use App\Modules\Product\Exceptions\ProductException;
 use App\Modules\Product\Repositories\Interfaces\IProductRepository;
+use App\Modules\Product\UseCases\InsertProductUseCase;
 use App\Presentation\Controllers\Controller;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
@@ -12,10 +14,12 @@ use Slim\Views\Twig;
 class ProductController extends Controller
 {
     private IProductRepository $productRepository;
+    private InsertProductUseCase $insertProductUseCase;
 
-    public function __construct(IProductRepository $productRepository)
+    public function __construct(IProductRepository $productRepository, InsertProductUseCase $insertProductUseCase)
     {
         $this->productRepository = $productRepository;
+        $this->insertProductUseCase = $insertProductUseCase;
     }
 
     public function listProducts(Request $request, Response $response)
@@ -44,13 +48,20 @@ class ProductController extends Controller
 
         $product = new Product();
         $product->name = $formData['name'];
-        $product->price = $formData['price'];
+        $product->price = (float) $formData['price'];
 
-        $this->productRepository->save($product);
-        
-        $routeParser = $this->getRouteParser($request);
-        return $response
-            ->withHeader('Location', $routeParser->urlFor('products'))
-            ->withStatus(302);
+        try {
+            $this->insertProductUseCase->handle($product);
+            $routeParser = $this->getRouteParser($request);
+            return $response
+                ->withHeader('Location', $routeParser->urlFor('products'))
+                ->withStatus(302);
+        } catch (ProductException $e) {
+            $view = Twig::fromRequest($request);
+            $data = [
+                'error' => $e->getMessage()
+            ];
+            return $view->render($response, 'Product/product.html', $data);
+        }
     }
 }

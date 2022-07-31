@@ -5,6 +5,11 @@
 {% block content %}
     <h1>Hello to creation of a new product</h1>
 
+    {% if error %}
+      <div class="alert alert-warning" role="alert">
+        {{ error }}
+      </div>
+    {% endif %}
     <form method="post">
         <div class="mb-3">
             <label for="name" class="form-label">Nome</label>
