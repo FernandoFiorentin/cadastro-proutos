@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Product\Repositories;
+namespace App\Modules\Product\Repositories\Database;
 
 use App\DB\DB;
 use App\Modules\Product\Entities\Product;

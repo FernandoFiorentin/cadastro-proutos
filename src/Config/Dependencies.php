@@ -3,7 +3,7 @@
 namespace App\Config;
 
 use App\Modules\Product\Repositories\Interfaces\IProductRepository;
-use App\Modules\Product\Repositories\ProductRepository;
+use App\Modules\Product\Repositories\Database\ProductRepository;
 
 class Dependencies
 {
