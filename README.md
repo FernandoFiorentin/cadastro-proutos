@@ -12,7 +12,10 @@ Utiliza os seguintes frameworks:
 ```bash
 composer install
 ```
-
+### Criar banco de dados
+```bash
+.\vendor\bin\phinx migrate
+```
 ### Rodar testes de unidade
 No windows
 ```bash
